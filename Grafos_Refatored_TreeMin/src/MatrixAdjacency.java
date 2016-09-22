@@ -29,14 +29,7 @@ public class MatrixAdjacency extends ComputationalRepresentation{
 		}
 	}
 	
-	public int getWeight(int value){
-		for(int i=0; i<this.sizeVertex; i++){
-			for(int j=0; j<this.sizeVertex; j++){
-				if(matrix[i][j] == value){
-					return weight[i][j];
-				}
-			}
-		}
-		return 0;
+	public int getWeight(int u, int v){
+		return weight[u][v];
 	}
 }

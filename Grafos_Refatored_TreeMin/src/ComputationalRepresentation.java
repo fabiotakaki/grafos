@@ -10,5 +10,5 @@ public abstract class ComputationalRepresentation {
     public abstract void addEdge(int u, int v, int w);
     public abstract boolean verifyAdjacency(int u, int v);
     public abstract void show();
-    public abstract int getWeight(int value);
+    public abstract int getWeight(int u, int v);
 }

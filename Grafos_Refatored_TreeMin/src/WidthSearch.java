@@ -14,8 +14,8 @@ public class WidthSearch {
 		q		 = new Queue();
 	}
 	
-	public void process(){
-		int s = 0;
+	public void process(int n){
+		int s = n;
 		int w = 0;
 		for(int i=1; i<g.getSizeVertex(); i++){
 			colors[i] = "w";
@@ -32,7 +32,7 @@ public class WidthSearch {
 			Item u = q.getHead();
 			q.remove();
 			for(int v=0; v<g.getSizeVertex(); v++){
-				if(g.verifyAdjacency(v, u.getValue())){
+				if(g.verifyAdjacency(u.getValue(), v)){
 					if(colors[v] == "w"){
 						colors[v] = "g";
 						distance[v] = distance[u.getValue()]+1;
@@ -43,6 +43,14 @@ public class WidthSearch {
 			}
 			colors[u.getValue()] = "b";
 		}
+	}
+	
+	public int[] getPi(){
+		return this.pi;
+	}
+	
+	public String[] getColors(){
+		return this.colors;
 	}
 	
 	public void show(){

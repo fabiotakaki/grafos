@@ -20,7 +20,7 @@ public class Main {
 			int sizeVertex = Integer.parseInt(line);
 			
 			// Crio o Grafo
-			Graph g = new Graph(sizeVertex, new MatrixAdjacency(sizeVertex));
+			Graph g = new Graph(sizeVertex, new ListAdjacency(sizeVertex));
 			
 			// caminho mais uma vez para começar a leitura das arestas
 			line = readFile.readLine();
@@ -28,6 +28,7 @@ public class Main {
 				String aux = line;
 				String[] split = aux.split(" ");
 				g.addEdge( Integer.parseInt(split[0]), Integer.parseInt(split[1]), Integer.parseInt(split[2]) );
+
 				line = readFile.readLine();
 			}
 			
@@ -35,25 +36,38 @@ public class Main {
 			
 			System.out.println("BUSCA EM PROFUNDIDADE:");
 			DepthSearch x = new DepthSearch(g);
-			x.process();
+			x.process(0);
 			x.show();
 			
 			System.out.println();
-
-//			System.out.println("TESTE DE FILA:");
-//			Queue y = new Queue();
-//			y.add(1);
-//			y.add(2);
-//			y.add(3);
-//			y.add(4);
-//			y.add(5);
-//			y.remove();
-//			y.show();
 		
 			System.out.println("BUSCA EM LARGURA:");
 			WidthSearch h = new WidthSearch(g);
-			h.process();
+			h.process(0);
 			h.show();
+			
+			
+//			Prim p = new Prim(g);
+//			Graph prim = p.process();
+//			prim.show();
+//			
+//			System.out.println("KRUSKAL !");
+//			Kruskal k = new Kruskal(g);
+//			k.process();
+//			
+//			BellmanFord bf = new BellmanFord(g);
+//			bf.process();
+//			
+//			Dijkstra dij = new Dijkstra(g);
+//			dij.process();
+			
+			CheckPath cp = new CheckPath(g);
+			cp.processWidthSerch(0, 1);
+			cp.processWidthSerch(0, 2);
+			cp.processWidthSerch(0, 3);
+			cp.processWidthSerch(2, 1);
+				
+			cp.processDepthSearch(0, 1);
 
 		}catch(IOException e){
 			System.err.printf("Erro na abertura de arquivo %s \n", e.getMessage());

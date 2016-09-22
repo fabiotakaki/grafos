@@ -49,9 +49,8 @@ public class List {
 	public int getWeight(int value){
 		Item aux = head;
 		while(aux != null){
-			if(aux.getValue() == value){
-				return aux.getWeight();
-			}
+			if(aux.getValue() == value) return aux.getWeight();
+			aux = aux.getNext();
 		}
 		return 0;
 	}
